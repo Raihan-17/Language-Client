@@ -1,7 +1,7 @@
 
 import React, { useContext, useState,useEffect } from 'react';
 import { NavLink, Link } from 'react-router';
-import logo from '/languageLogo.png';
+import logo from '/speakeasy.png';
 import { AuthContext } from '../provider/AuthProvider';
 // import { Moon, Sun } from 'lucide-react';
 
@@ -38,12 +38,13 @@ const Navbar = () => {
 
   const links = [
     { to: '/', text: 'Home' },
-    // { to: '/gardeners', text: 'Explore Gardeners' },
-    // { to: '/tips', text: 'Trending Tips' },
+    { to: '/tutors', text: 'Find Tutors' },
+    { to: '/addTutorial', text: 'Add Tutorial' },
+    { to: '/myTutorials', text: 'My Tutorials' },
+    { to: '/bookedTutors', text: 'My Booked Tutors' },
+
     // ...(user ? [
-    //   { to: '/shareTips', text: 'Share a Garden Tip' },
-    //   { to: '/myTips', text: 'My Tips' }
-    // ] : [])
+    //   { to: '/shareTips', text: 'Share a Garden Tip' }] : [])
   ];
 
   return (
@@ -52,8 +53,8 @@ const Navbar = () => {
         {/* Logo */}
         <div className="navbar-start flex items-center gap-1">
           <img className='w-10 h-10 rounded' src={logo} alt="logo" />
-          <div className='text-xl font-bold text-green-900'>
-            GARDENER'S <span className='text-green-600'>POINT</span>
+          <div className='text-2xl font-bold text-teal-900'>
+            SPEAK<span className='text-teal-600'>EASY</span>
           </div>
         </div>
 
@@ -64,7 +65,7 @@ const Navbar = () => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `btn btn-ghost text-green-800 text-base ${isActive ? 'text-green-950 border-b-2 border-green-700' : ''}`
+                `btn btn-ghost text-teal-800 text-base ${isActive ? 'text-teal-600 bg-slate-200 text-lg' : ''}`
               }
             >
               {link.text}
@@ -94,23 +95,23 @@ const Navbar = () => {
                 <img
                   src={user.photoURL || 'https://i.ibb.co/s3H1Ff8/default-avatar.png'}
                   alt="User"
-                  className="w-10 h-10 rounded-full border-2 border-green-500"
+                  className="w-10 h-10 rounded-full border-2 border-slate-500"
                 />
                 {showName && (
-                  <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white shadow-xl px-2 py-1 rounded text-md text-green-800 z-10">
+                  <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-white shadow-xl px-2 py-1 rounded text-md text-teal-800 z-10">
                     {user.displayName || 'Anonymous'}
                   </div>
                 )}
               </div>
               <button
                 onClick={handleLogOut}
-                className="btn bg-teal-900 text-white hover:bg-green-600"
+                className="btn bg-black text-white hover:bg-slate-600"
               >
                 Logout
               </button>
             </>
           ) : (
-            <Link to="/auth/login" className="btn bg-teal-900 text-white hover:bg-green-600">
+            <Link to="/auth/login" className="btn bg-black text-white hover:bg-slate-600">
               Login / Signup
             </Link>
           )}

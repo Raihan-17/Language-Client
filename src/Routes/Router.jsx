@@ -8,6 +8,11 @@ import Login from "../Components/Login";
 import Register from "../Components/Register";
 import PrivateRoute from "../provider/PrivateRoute";
 import Profile from "../Components/Profile";
+import FindTutor from "../Components/FindTutor";
+import AddTutorial from "../Components/AddTutorial";
+import MyTutorials from "../Components/MyTutorials";
+import MybookedTutors from "../Components/MybookedTutors";
+import Tutordetail from "../Components/Tutordetail";
 
 
 const Router =createBrowserRouter([
@@ -20,7 +25,42 @@ const Router =createBrowserRouter([
         path:"/",
         element:<Home></Home>
       },
-
+       {
+        path:"/tutors",
+        element:<FindTutor></FindTutor>
+      },
+        {
+        path: "/addTutorial",
+         element: (
+          <PrivateRoute>
+             <AddTutorial></AddTutorial>
+          </PrivateRoute>
+        )       
+      },
+       {
+        path: "/myTutorials",
+         element: (
+          <PrivateRoute>
+             <MyTutorials></MyTutorials>
+          </PrivateRoute>
+        )       
+      },
+      {
+        path: "/bookedTutors",
+         element: (
+          <PrivateRoute>
+             <MybookedTutors></MybookedTutors>
+          </PrivateRoute>
+        )       
+      },
+      {
+        path: "/tutordetails",
+         element: (
+          <PrivateRoute>
+             <Tutordetail></Tutordetail>
+          </PrivateRoute>
+        )       
+      },
 
     ]
 
