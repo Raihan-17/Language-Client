@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router";
 import ErrorPage from "../Components/ErrorPage";
 import HomeLayout from "../layouts/HomeLayout";
 import Home from "../Components/Home";
-
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../Components/Login";
 import Register from "../Components/Register";
@@ -13,6 +12,8 @@ import AddTutorial from "../Components/AddTutorial";
 import MyTutorials from "../Components/MyTutorials";
 import MybookedTutors from "../Components/MybookedTutors";
 import Tutordetail from "../Components/Tutordetail";
+import LearnFree from "../Components/LearnFree";
+import HowItWorks from "../Components/HowItWorks";
 
 
 const Router =createBrowserRouter([
@@ -28,6 +29,14 @@ const Router =createBrowserRouter([
        {
         path:"/tutors",
         element:<FindTutor></FindTutor>
+      },
+      {
+        path:"/learn-free",
+        element:<LearnFree></LearnFree>
+      },
+      {
+        path:"/how-it-works",
+        element:<HowItWorks></HowItWorks>
       },
         {
         path: "/addTutorial",
