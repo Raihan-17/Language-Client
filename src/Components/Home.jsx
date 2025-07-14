@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './Banner';
 import LearnFree from './LearnFree';
+import HowItWorks from './HowItWorks';
 
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
         <div className='w-11/12 mx-auto my-3'>
             <Banner></Banner>
             <LearnFree></LearnFree>
+            <HowItWorks></HowItWorks>
             
         </div>
     );

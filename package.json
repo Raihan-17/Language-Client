@@ -16,9 +16,12 @@
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",
+    "react-awesome-reveal": "^4.3.1",
     "react-dom": "^19.1.0",
     "react-router": "^7.6.3",
+    "react-simple-typewriter": "^5.0.1",
     "react-slick": "^0.30.3",
+    "react-tooltip": "^5.29.1",
     "slick-carousel": "^1.8.1",
     "tailwindcss": "^4.1.11"
   },
