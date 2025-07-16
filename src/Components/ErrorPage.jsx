@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
-// import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-green-50 to-green-200 text-center p-6">
-      {/* <Helmet>
-        <title>Error - Page Not Found</title>
-      </Helmet> */}
+    
 
       <img
         src="https://cdn-icons-png.flaticon.com/512/2909/2909766.png" // garden icon
@@ -28,7 +25,7 @@ const ErrorPage = () => {
         to="/"
         className="px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition"
       >
-        🌿 Back to Home
+       Back to Home
       </Link>
     </div>
   );

@@ -45,7 +45,7 @@ const LearnFree = () => {
                         ))}
                     </div>
                     
-                    <button className='mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors'>
+                    <button className='mt-4 px-6 py-3 bg-black hover:bg-blue-400 text-white rounded-lg font-medium transition-colors'>
                         Learn More Phrases
                     </button>
                 </div>
