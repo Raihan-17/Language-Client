@@ -4,7 +4,7 @@ import { Mail, MessageSquare, Globe, Twitter, Instagram, Linkedin, Github } from
 
 const Footer = () => {
   return (
-    <footer className="mx-auto bg-gradient-to-br from-gray-900 via-teal-900 to-gray-900 text-white pt-16 pb-8 px-4 border-t border-teal-400/20">
+    <footer className="mx-auto bg-black text-white pt-16 pb-8 px-4 border-t border-teal-400/20">
       
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Main Footer Content */}

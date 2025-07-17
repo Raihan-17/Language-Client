@@ -3,27 +3,17 @@ import { Link } from 'react-router';
 
 const ErrorPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-green-50 to-green-200 text-center p-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg- text-center p-6">
     
 
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/2909/2909766.png" // garden icon
-        alt="Lost in the garden"
-        className="w-32 h-32 mb-6"
-      />
-
-      <h1 className="text-5xl font-extrabold text-green-900 mb-4">
+      <h1 className="text-5xl font-extrabold text-slate-900 mb-4">
         Oops! Page Not Found
       </h1>
-      <p className="text-2xl text-red-600 font-semibold mb-6">Error 404</p>
-
-      <p className="text-lg text-gray-700 mb-6 max-w-md">
-        It looks like you've wandered off the garden path. But don’t worry, you can always get back to greener grounds.
-      </p>
+      <p className="text-3xl text-red-700 font-semibold mb-6">Error 404</p>
 
       <Link
         to="/"
-        className="px-6 py-3 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition"
+        className="px-6 py-3 bg-black text-white rounded-xl shadow hover:bg-gray-700 transition"
       >
        Back to Home
       </Link>

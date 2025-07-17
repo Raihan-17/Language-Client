@@ -14,7 +14,7 @@ const LearnFree = () => {
     ];
 
     return (
-        <div className=' my-12 rounded-2xl py-8 px-4 bg-white  md:px-8'>
+        <div className=' my-12 rounded-2xl py-8 px-4 bg-white shadow-2xl  md:px-8'>
             <div className='flex flex-col lg:flex-row items-center justify-between gap-8'>
                
                 <div className='lg:w-1/2 space-y-6'>
@@ -50,9 +50,9 @@ const LearnFree = () => {
                     </button>
                 </div>
                 
-                {/* Lottie Animation */}
+                
                 <div className='lg:w-1/2 flex justify-center'>
-                    <div className='w-full max-w-md'>
+                    <div className='w-full max-w-md '>
                         <Lottie 
                             animationData={anime} 
                             loop={true}
