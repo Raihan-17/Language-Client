@@ -28,6 +28,7 @@ const AddTutorial = () => {
           name: user?.displayName || "",
           email: user?.email || "",
           image: "",
+          tutorialImage: "",
           language: "",
           price: "",
           description: "",
@@ -40,8 +41,8 @@ const AddTutorial = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white shadow-md rounded-lg p-6 mt-8">
-      <h2 className="text-2xl font-bold mb-6 text-center">Add New Tutorial</h2>
+    <div className="max-w-xl mx-auto bg-slate-100 shadow-md rounded-lg shadow-2xl p-6 my-10">
+      <h2 className="text-3xl font-bold mb-6 text-center text-teal-950">Add New Tutorial</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block mb-2 font-semibold">Name</label>
@@ -50,7 +51,7 @@ const AddTutorial = () => {
             name="name"
             value={formData.name}
             readOnly
-            className="w-full border rounded px-3 py-2 bg-gray-100"
+            className="w-full border rounded px-3 py-2 bg-gray-200"
           />
         </div>
         <div>
@@ -60,7 +61,7 @@ const AddTutorial = () => {
             name="email"
             value={formData.email}
             readOnly
-            className="w-full border rounded px-3 py-2 bg-gray-100"
+            className="w-full border rounded px-3 py-2 bg-gray-200"
           />
         </div>
         <div>
@@ -70,7 +71,19 @@ const AddTutorial = () => {
             name="image"
             value={formData.image}
             onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 bg-white"
+            placeholder="Enter tutor image URL"
+            required
+          />
+        </div>
+         <div>
+          <label className="block mb-2 font-semibold">Tutorial Related Image URL</label>
+          <input
+            type="text"
+            name="tutorialImage"
+            value={formData.tutorialImage}
+            onChange={handleChange}
+            className="w-full border rounded px-3 py-2 bg-white"
             placeholder="Enter tutorial image URL"
             required
           />
@@ -82,7 +95,7 @@ const AddTutorial = () => {
             name="language"
             value={formData.language}
             onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 bg-white"
             placeholder="Enter language"
             required
           />
@@ -94,7 +107,7 @@ const AddTutorial = () => {
             name="price"
             value={formData.price}
             onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 bg-white"
             placeholder="Enter price"
             required
           />
@@ -105,7 +118,7 @@ const AddTutorial = () => {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full border rounded px-3 py-2"
+            className="w-full border rounded px-3 py-2 bg-white"
             rows="4"
             placeholder="Enter description"
             required
@@ -113,7 +126,7 @@ const AddTutorial = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-teal-600 text-white py-2 rounded hover:bg-teal-700"
+          className="w-full bg-black text-white py-2 rounded hover:bg-teal-700"
         >
           Add Tutorial
         </button>

@@ -2,7 +2,8 @@ import React, { useContext, useState,useEffect } from 'react';
 import { NavLink, Link } from 'react-router';
 import logo from '/speakeasy.png';
 import { AuthContext } from '../provider/AuthProvider';
-// import { Moon, Sun } from 'lucide-react';
+import { FaMoon, FaSun } from 'react-icons/fa';
+
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -17,6 +18,11 @@ const Navbar = () => {
       .catch((error) => console.error(error));
   };
 
+   useEffect(() => {
+    document.body.style.backgroundColor = darkMode ? '#1a202c' : 'white';
+  }, [darkMode]);
+
+
 
   const links = [
     { to: '/', text: 'Home' },
@@ -24,14 +30,11 @@ const Navbar = () => {
     { to: '/addTutorial', text: 'Add Tutorial' },
     { to: '/myTutorials', text: 'My Tutorials' },
     { to: '/my-booked-Tutors', text: 'My Booked Tutors' },
-
-  
   ];
 
   return (
     <div className='bg-white shadow-md sticky top-0 z-50'>
       <div className="navbar w-11/12 mx-auto py-3 flex justify-between items-center">
-        {/* Logo */}
         <div className="navbar-start flex items-center gap-1">
           <img className='w-10 h-10 rounded' src={logo} alt="logo" />
           <div className='text-2xl font-bold text-teal-900'>
@@ -57,6 +60,13 @@ const Navbar = () => {
         {/* Right Buttons */}
         <div className="navbar-end flex items-center gap-2">
 
+         <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="btn bg-teal-500 rounded-full text-xl"
+            title="Toggle theme"
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
 
           {user ? (
             <>

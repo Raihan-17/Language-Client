@@ -77,15 +77,15 @@ const MyTutorials = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="max-w-5xl mx-auto mt-8">
-      <h2 className="text-2xl font-bold mb-4">My Tutorials</h2>
+    <div className="w-11/12 mx-auto my-8 bg-slate-100 p-6 rounded-lg shadow-lg">
+      <h2 className="text-3xl font-bold mb-4 text-center text-teal-950">My Tutorials</h2>
       {tutorials.length === 0 ? (
         <p>No tutorials added yet.</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table w-full border">
+          <table className="table w-full text-center border-2 border-gray-300">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="bg-gray-200">
                 <th>Image</th>
                 <th>Language</th>
                 <th>Price</th>
@@ -97,24 +97,27 @@ const MyTutorials = () => {
             <tbody>
               {tutorials.map(tutorial => (
                 <tr key={tutorial._id}>
-                  <td><img src={tutorial.image} alt="" className="w-16 h-16 object-cover rounded" /></td>
-                  <td>{tutorial.language}</td>
-                  <td>${tutorial.price}</td>
-                  <td>{tutorial.description}</td>
-                  <td>{tutorial.review}</td>
+                  <td><img src={tutorial.tutorialImage} alt="" className="w-16 h-16 object-cover rounded" /></td>
+                  <td className="font-bold text-slate-800">{tutorial.language}</td>
+                  <td className="font-bold text-slate-800">${tutorial.price}</td>
+                  <td className="font-bold text-slate-800">{tutorial.description}</td>
+                  <td className="font-bold text-slate-800">{tutorial.review}</td>
                   <td className="flex gap-2">
-                    <button
-                      onClick={() => handleUpdateClick(tutorial)}
-                      className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-                    >
-                      Update
-                    </button>
-                    <button
-                      onClick={() => handleDelete(tutorial._id)}
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                    >
-                      Delete
-                    </button>
+                    <div className="flex flex-col gap-2">
+                      <button
+                        onClick={() => handleUpdateClick(tutorial)}
+                        className="bg-cyan-900 text-white px-3 py-1 rounded hover:bg-teal-600"
+                      >
+                        Update
+                      </button>
+                  
+                      <button
+                        onClick={() => handleDelete(tutorial._id)}
+                        className="bg-red-700 text-white px-3 py-1 rounded hover:bg-red-600"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -125,8 +128,8 @@ const MyTutorials = () => {
 
       {/* Update Modal */}
       {showModal && selectedTutorial && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg w-96">
+        <div className="fixed inset-0 bg-black  flex items-center justify-center ">
+          <div className="bg-gray-100 p-6 rounded-lg w-6/12 h-screen my-5">
             <h3 className="text-lg font-semibold mb-4">Update Tutorial</h3>
             <form onSubmit={handleUpdate} className="space-y-4">
               <input type="text" value={selectedTutorial.name} readOnly className="w-full border px-3 py-2 bg-gray-100" />
@@ -146,7 +149,7 @@ const MyTutorials = () => {
                 </button>
                 <button
                   type="submit"
-                  className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                  className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
                 >
                   Update
                 </button>
