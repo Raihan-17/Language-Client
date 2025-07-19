@@ -1,68 +1,82 @@
-import React from 'react';
-
-// const FindTutor = () => {
-//     return (
-//         <div>
-            
-//         </div>
-//     );
-// };
-
-// export default FindTutor;
-
-
-
-import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Loading from "../components/Loading";
+import { Link, useParams } from "react-router";
+import Loading from "./Loading";
 
 const FindTutor = () => {
-  const { category } = useParams();
+  const { category } = useParams(); // for /find-tutors/:category
   const [tutors, setTutors] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    axios.get(`/tutorials?language=${category}`)
-      .then(res => setTutors(res.data))
-      .finally(() => setLoading(false));
+    const fetchTutors = async () => {
+      try {
+        setLoading(true);
+        const url = category
+          ? `http://localhost:3000/tutorials?language=${category}`
+          : `http://localhost:3000/tutorials`;
+        const res = await axios.get(url);
+        setTutors(Array.isArray(res.data) ? res.data : []);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTutors();
   }, [category]);
 
-  const handleSearch = () => {
-    setLoading(true);
-    axios.get(`/tutorials?language=${search}`)
-      .then(res => setTutors(res.data))
-      .finally(() => setLoading(false));
+  const handleSearch = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(
+        `http://localhost:3000/tutorials?language=${search}`
+      );
+      setTutors(res.data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  if (loading) return <Loading />;
-
   return (
-    <div>
-      <div className="flex gap-2 mb-4">
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-4">Find Tutors</h2>
+      <div className="flex gap-2 mb-6">
         <input
           type="text"
+          placeholder="Search by language..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search by language"
-          className="border px-4 py-2"
+          className="border p-2 rounded w-full md:w-1/3"
         />
-        <button onClick={handleSearch} className="btn btn-primary">Search</button>
+        <button onClick={handleSearch} className="bg-blue-500 text-white p-2 rounded">
+          Search
+        </button>
       </div>
-      <div className="grid grid-cols-3 gap-6">
-        {tutors.map(tutor => (
-          <div key={tutor._id} className="p-4 border rounded">
-            <img src={tutor.image} alt={tutor.language} className="w-full h-40 object-cover" />
-            <h3>{tutor.name}</h3>
-            <p>{tutor.language}</p>
-            <p>${tutor.price}</p>
-            <p>Reviews: {tutor.review}</p>
-            <a href={`/tutor/${tutor._id}`} className="btn btn-primary">Details</a>
-          </div>
-        ))}
-      </div>
+
+      {loading ? (
+       <Loading></Loading>
+      ) : tutors.length === 0 ? (
+        <p>No tutors found.</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {tutors.map((tutor) => (
+            <div key={tutor._id} className="border p-4 rounded shadow">
+              <img src={tutor.image} alt={tutor.language} className="w-full h-40 object-cover rounded" />
+              <h3 className="text-lg font-bold mt-2">{tutor.name}</h3>
+              <p>Language: {tutor.language}</p>
+              <p>Price: ${tutor.price}</p>
+              <p>Review: {tutor.review}</p>
+              <Link to={`/tutor/${tutor._id}`} className="text-blue-600 mt-2 inline-block">
+                View Details
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

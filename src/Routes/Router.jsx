@@ -55,7 +55,7 @@ const Router =createBrowserRouter([
         )       
       },
       {
-        path: "/bookedTutors",
+        path: "/my-booked-Tutors",
          element: (
           <PrivateRoute>
              <MybookedTutors></MybookedTutors>
@@ -63,7 +63,7 @@ const Router =createBrowserRouter([
         )       
       },
       {
-        path: "/tutors/:id",
+        path: "/tutor/:id",
          element: (
           <PrivateRoute>
              <Tutordetail></Tutordetail>

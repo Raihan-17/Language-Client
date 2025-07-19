@@ -23,7 +23,7 @@ const Navbar = () => {
     { to: '/tutors', text: 'Find Tutors' },
     { to: '/addTutorial', text: 'Add Tutorial' },
     { to: '/myTutorials', text: 'My Tutorials' },
-    { to: '/bookedTutors', text: 'My Booked Tutors' },
+    { to: '/my-booked-Tutors', text: 'My Booked Tutors' },
 
   
   ];
