@@ -2,7 +2,7 @@ import React, { useContext, useState,useEffect } from 'react';
 import { NavLink, Link } from 'react-router';
 import logo from '/speakeasy.png';
 import { AuthContext } from '../provider/AuthProvider';
-import { Moon, Sun } from 'lucide-react';
+// import { Moon, Sun } from 'lucide-react';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -17,23 +17,6 @@ const Navbar = () => {
       .catch((error) => console.error(error));
   };
 
-  //  const toggleTheme = () => {
-  //   setDarkMode(prev => !prev);
-  //   document.documentElement.classList.toggle('dark');
-  // };
-
-  // Persist theme on page reload
-  // useEffect(() => {
-  //   const storedTheme = localStorage.getItem('theme');
-  //   if (storedTheme === 'dark') {
-  //     setDarkMode(true);
-  //     document.documentElement.classList.add('dark');
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-  // }, [darkMode]);
 
   const links = [
     { to: '/', text: 'Home' },
@@ -42,8 +25,7 @@ const Navbar = () => {
     { to: '/myTutorials', text: 'My Tutorials' },
     { to: '/bookedTutors', text: 'My Booked Tutors' },
 
-    // ...(user ? [
-    //   { to: '/shareTips', text: 'Share a Garden Tip' }] : [])
+  
   ];
 
   return (
@@ -75,14 +57,6 @@ const Navbar = () => {
         {/* Right Buttons */}
         <div className="navbar-end flex items-center gap-2">
 
-          {/* Theme Toggle */}
-          {/* <button
-            onClick={toggleTheme}
-            className="btn btn-outline rounded-4xl bg-slate-700 dark:text-white"
-            title="Toggle Theme"
-          >
-            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-          </button> */}
 
           {user ? (
             <>
