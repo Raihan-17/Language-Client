@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router";
 import Loading from "./Loading";
 
 const FindTutor = () => {
-  const { category } = useParams(); // for /find-tutors/:category
+  const { category } = useParams(); 
   const [tutors, setTutors] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);

@@ -24,14 +24,3 @@ const PrivateRoute = ({ children }) => {
 
 export default PrivateRoute;
 
-// import React from 'react';
-
-// const PrivateRoute = () => {
-//     return (
-//         <div>
-            
-//         </div>
-//     );
-// };
-
-// export default PrivateRoute;

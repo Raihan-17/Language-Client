@@ -7,7 +7,6 @@ const Footer = () => {
     <footer className="mx-auto bg-black text-white pt-16 pb-8 px-4 border-t border-teal-400/20">
       
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           
           {/* Brand Column */}

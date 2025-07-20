@@ -7,36 +7,37 @@ const MyBookedTutors = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [reviewedTutors, setReviewedTutors] = useState([]); // Track which tutors have been reviewed
+  const [reviewedTutors, setReviewedTutors] = useState([]);
   const userEmail = user?.email;
 
-  useEffect(() => {
-    const fetchBookings = async () => {
-      try {
-        const res = await axios.get(`http://localhost:3000/bookings?email=${userEmail}`);
-        setBookings(res.data);
-        
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (userEmail) fetchBookings();
-  }, [userEmail]);
+ useEffect(() => {
+  const fetchBookings = async () => {
+    if (!userEmail) return;
+    try {
+      const token = await user.getIdToken();
+      const res = await axios.get(`http://localhost:3000/bookings?email=${userEmail}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-   //sending jwt in axios request header
-  axios.get(`http://localhost:3000/bookings?email=${user.email}`, {
-  headers: {
-    Authorization: `Bearer ${user.accessToken}`,
-  },
-});
+      setBookings(res.data);
+    } catch (err) {
+      console.error("Error fetching bookings:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchBookings();
+}, [userEmail, user]);
+
 
   const handleReview = async (tutorId) => {
     try {
       await axios.patch(`http://localhost:3000/tutorials/${tutorId}/review`);
       
-      // Update UI
+      
       setBookings(prev =>
         prev.map(booking =>
           booking.tutorId === tutorId
@@ -45,7 +46,6 @@ const MyBookedTutors = () => {
         )
       );
       
-      // Mark this tutor as reviewed by this user
       setReviewedTutors(prev => [...prev, tutorId]);
       
     } catch (error) {

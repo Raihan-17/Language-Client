@@ -9,7 +9,7 @@ const TutorDetail = () => {
   const { user } = useContext(AuthContext);
   const [tutor, setTutor] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isBooked, setIsBooked] = useState(false); // New state for booking status
+  const [isBooked, setIsBooked] = useState(false); 
   const userEmail = user?.email;
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const TutorDetail = () => {
         const res = await axios.get(`http://localhost:3000/tutorials/${id}`);
         setTutor(res.data);
         
-        // Optional: Check if already booked (if your API supports it)
+        
         if (userEmail) {
           const bookingCheck = await axios.get(`http://localhost:3000/bookings?tutorId=${id}&email=${userEmail}`);
           if (bookingCheck.data.length > 0) {
@@ -47,7 +47,7 @@ const TutorDetail = () => {
 
       const res = await axios.post("http://localhost:3000/bookings", booking);
       alert("Tutor booked successfully!");
-      setIsBooked(true); // Update state to disable button
+      setIsBooked(true); 
     } catch (err) {
       console.error(err);
       alert("Failed to book tutor.");

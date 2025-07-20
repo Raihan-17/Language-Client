@@ -8,35 +8,37 @@ const MyTutorials = () => {
   const { user } = useContext(AuthContext);
   const [tutorials, setTutorials] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedTutorial, setSelectedTutorial] = useState(null); // For update modal
+  const [selectedTutorial, setSelectedTutorial] = useState(null); 
   const [showModal, setShowModal] = useState(false);
 
-  // Fetch user tutorials
-  useEffect(() => {
-    if (user?.email) {
-      axios.get(`http://localhost:3000/my-tutorials?email=${user.email}`)
-        .then(res => {
-          setTutorials(res.data);
-          setLoading(false);
-        })
-        .catch(err => {
-          console.error(err);
-          setLoading(false);
-        });
+  
+useEffect(() => {
+  const fetchMyTutorials = async () => {
+    if (!user?.email) return;
+
+    try {
+    
+      const token = await user.getIdToken();
+
+      
+      const res = await axios.get(`http://localhost:3000/my-tutorials?email=${user.email}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setTutorials(res.data);
+    } catch (err) {
+      console.error("Error fetching tutorials:", err);
+    } finally {
+      setLoading(false);
     }
-  }, [user]);
+  };
 
-  console.log(user.accessToken);
-
-  //sending jwt in axios request header
-  axios.get(`http://localhost:3000/my-tutorials?email=${user.email}`, {
-  headers: {
-    Authorization: `Bearer ${user.accessToken}`,
-  },
-});
+  fetchMyTutorials();
+}, [user]);
 
 
-  // Delete tutorial
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -58,13 +60,13 @@ const MyTutorials = () => {
     });
   };
 
-  // Open update modal
+
   const handleUpdateClick = (tutorial) => {
     setSelectedTutorial(tutorial);
     setShowModal(true);
   };
 
-  // Update tutorial
+
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -136,7 +138,7 @@ const MyTutorials = () => {
         </div>
       )}
 
-      {/* Update Modal */}
+     
       {showModal && selectedTutorial && (
         <div className="fixed inset-0 bg-black  flex items-center justify-center ">
           <div className="bg-gray-100 p-6 rounded-lg w-6/12 h-screen my-5">

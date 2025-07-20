@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      console.log("User state changed", currentUser);
+      // console.log("User state changed", currentUser);
     });
     return () => {
       unsubscribe();
@@ -62,14 +62,3 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
-// import React from 'react';
-
-// const AuthProvider = () => {
-//     return (
-//         <div>
-            
-//         </div>
-//     );
-// };
-
-// export default AuthProvider;

@@ -18,7 +18,7 @@ const Stats = () => {
 
   useEffect(() => {
     if (inView) {
-      const duration = 5; // seconds
+      const duration = 5; 
       const increments = {
         tutors: 32000 / (60 * duration),
         reviews: 300000 / (60 * duration),
@@ -35,7 +35,7 @@ const Stats = () => {
           nationalities: Math.min(prev.nationalities + increments.nationalities, 180),
           rating: Math.min(prev.rating + increments.rating, 4.8),
         }));
-      }, 1000 / 60); // 60fps
+      }, 1000 / 60); 
 
       return () => clearInterval(interval);
     }
