@@ -25,6 +25,13 @@ const MyBookedTutors = () => {
     if (userEmail) fetchBookings();
   }, [userEmail]);
 
+   //sending jwt in axios request header
+  axios.get(`http://localhost:3000/bookings?email=${user.email}`, {
+  headers: {
+    Authorization: `Bearer ${user.accessToken}`,
+  },
+});
+
   const handleReview = async (tutorId) => {
     try {
       await axios.patch(`http://localhost:3000/tutorials/${tutorId}/review`);

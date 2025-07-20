@@ -26,6 +26,16 @@ const MyTutorials = () => {
     }
   }, [user]);
 
+  console.log(user.accessToken);
+
+  //sending jwt in axios request header
+  axios.get(`http://localhost:3000/my-tutorials?email=${user.email}`, {
+  headers: {
+    Authorization: `Bearer ${user.accessToken}`,
+  },
+});
+
+
   // Delete tutorial
   const handleDelete = (id) => {
     Swal.fire({
