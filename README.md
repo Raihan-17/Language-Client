@@ -1,12 +1,73 @@
-# React + Vite
+# 🗣️ SpeakEasy - Language Tutor Booking Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![SpeakEasy Banner](https://i.imgur.com/ABC123.jpg)  
+*Connecting learners with expert language tutors worldwide*
 
-Currently, two official plugins are available:
+##  Live Demo
+🔗 [.netlify.app]  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+##  Purpose
+SpeakEasy is an online platform that:
+- Connects language learners with certified tutors
+- Provides 1-on-1 virtual tutoring sessions
+- Simplifies tutor discovery, booking, and progress tracking
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Key Features
+| Feature | Description |
+|---------|-------------|
+| **Tutor Discovery** | Browse tutors by language, price, and ratings |
+| **Secure Booking** | Book and manage sessions with calendar integration |
+| **Review System** | Rate tutors after completed sessions |
+| **Dark/Light Mode** | Toggleable theme for better user experience |
+| **JWT Authentication** | Secure login with email/password & Google Sign-In |
+| **Responsive Design** | Works on mobile, tablet, and desktop |
+
+##  Tech Stack
+### Frontend
+- React.js
+- Tailwind CSS
+- Framer Motion (animations)
+- React Router (navigation)
+- Axios (API calls)
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (database)
+- JWT (authentication)
+- Firebase (optional auth)
+
+##  NPM Packages Used
+```bash
+# Core
+react @latest
+react-dom @latest
+react-router-dom @latest
+axios @latest
+
+# UI & Styling
+tailwindcss @latest
+daisyui @latest
+lucide-react @latest
+
+# Animations
+framer-motion @latest
+react-simple-typewriter @latest
+react-awesome-reveal @latest
+
+# Forms & Validation
+react-hook-form @latest
+@hookform/resolvers @latest
+zod @latest
+
+# Authentication
+firebase @latest
+jsonwebtoken @latest
+
+# Lottie Animations
+lottie-react @latest
+
+# Testing
+react-testing-library @latest
+jest @latest
