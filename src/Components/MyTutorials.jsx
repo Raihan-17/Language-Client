@@ -140,38 +140,40 @@ useEffect(() => {
 
      
       {showModal && selectedTutorial && (
-        <div className="fixed inset-0 bg-black  flex items-center justify-center ">
-          <div className="bg-gray-100 p-6 rounded-lg w-6/12 h-screen my-5">
-            <h3 className="text-lg font-semibold mb-4">Update Tutorial</h3>
-            <form onSubmit={handleUpdate} className="space-y-4">
-              <input type="text" value={selectedTutorial.name} readOnly className="w-full border px-3 py-2 bg-gray-100" />
-              <input type="email" value={selectedTutorial.email} readOnly className="w-full border px-3 py-2 bg-gray-100" />
-              <input name="image" defaultValue={selectedTutorial.image} className="w-full border px-3 py-2" />
-              <input name="language" defaultValue={selectedTutorial.language} className="w-full border px-3 py-2" />
-              <input name="price" defaultValue={selectedTutorial.price} type="number" className="w-full border px-3 py-2" />
-              <textarea name="description" defaultValue={selectedTutorial.description} className="w-full border px-3 py-2" rows="3" />
-              <input type="text" value={selectedTutorial.review} readOnly className="w-full border px-3 py-2 bg-gray-100" />
-              <div className="flex justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={() => setShowModal(false)}
-                  className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
-                >
-                  Update
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div className="bg-gray-100 p-6 rounded-lg w-6/12 max-h-[90vh] overflow-auto">
+    <h3 className="text-lg font-semibold mb-4">Update Tutorial</h3>
+    <form onSubmit={handleUpdate} className="space-y-4">
+      <input type="text" value={selectedTutorial.name} readOnly className="w-full border px-3 py-2 bg-gray-100" />
+      <input type="email" value={selectedTutorial.email} readOnly className="w-full border px-3 py-2 bg-gray-100" />
+      <input name="image" defaultValue={selectedTutorial.tutorialImage} className="w-full border px-3 py-2" />
+      <input name="language" defaultValue={selectedTutorial.language} className="w-full border px-3 py-2" />
+      <input name="price" defaultValue={selectedTutorial.price} type="number" className="w-full border px-3 py-2" />
+      <textarea name="description" defaultValue={selectedTutorial.description} className="w-full border px-3 py-2" rows="3" />
+      <input type="text" value={selectedTutorial.review} readOnly className="w-full border px-3 py-2 bg-gray-100" />
+      <div className="flex justify-end gap-2">
+        <button
+          type="button"
+          onClick={() => setShowModal(false)}
+          className="bg-gray-400 text-white px-3 py-1 rounded hover:bg-gray-500"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+        >
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
       )}
     </div>
   );
 };
 
 export default MyTutorials;
+
