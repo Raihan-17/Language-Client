@@ -21,7 +21,7 @@ const AddTutorial = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/tutorials", formData);
+      const response = await axios.post("https://language-server-three.vercel.app/tutorials", formData);
       if (response.status === 200 || response.status === 201) {
         alert("Tutorial added successfully!");
         setFormData({

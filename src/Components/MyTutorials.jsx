@@ -21,7 +21,7 @@ useEffect(() => {
       const token = await user.getIdToken();
 
       
-      const res = await axios.get(`http://localhost:3000/my-tutorials?email=${user.email}`, {
+      const res = await axios.get(`https://language-server-three.vercel.app/my-tutorials?email=${user.email}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,7 +50,7 @@ useEffect(() => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/tutorials/${id}`)
+        axios.delete(`https://language-server-three.vercel.app/tutorials/${id}`)
           .then(() => {
             setTutorials(tutorials.filter(t => t._id !== id));
             Swal.fire("Deleted!", "Your tutorial has been deleted.", "success");
@@ -77,7 +77,7 @@ useEffect(() => {
       description: form.description.value
     };
 
-    axios.put(`http://localhost:3000/tutorials/${selectedTutorial._id}`, updatedData)
+    axios.put(`https://language-server-three.vercel.app/tutorials/${selectedTutorial._id}`, updatedData)
       .then(() => {
         setTutorials(tutorials.map(t => t._id === selectedTutorial._id ? { ...t, ...updatedData } : t));
         Swal.fire("Updated!", "Tutorial updated successfully.", "success");

@@ -14,8 +14,8 @@ const FindTutor = () => {
       try {
         setLoading(true);
         const url = category
-          ? `http://localhost:3000/tutorials?language=${category}`
-          : `http://localhost:3000/tutorials`;
+          ? `https://language-server-three.vercel.app/tutorials?language=${category}`
+          : `https://language-server-three.vercel.app/tutorials`;
         const res = await axios.get(url);
         setTutors(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
@@ -31,7 +31,7 @@ const FindTutor = () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        `http://localhost:3000/tutorials?language=${search}`
+        `https://language-server-three.vercel.app/tutorials?language=${search}`
       );
       setTutors(res.data);
     } catch (err) {

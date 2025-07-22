@@ -15,12 +15,12 @@ const TutorDetail = () => {
   useEffect(() => {
     const fetchTutor = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/tutorials/${id}`);
+        const res = await axios.get(`https://language-server-three.vercel.app/tutorials/${id}`);
         setTutor(res.data);
         
         
         if (userEmail) {
-          const bookingCheck = await axios.get(`http://localhost:3000/bookings?tutorId=${id}&email=${userEmail}`);
+          const bookingCheck = await axios.get(`https://language-server-three.vercel.app/bookings?tutorId=${id}&email=${userEmail}`);
           if (bookingCheck.data.length > 0) {
             setIsBooked(true);
           }
@@ -45,7 +45,7 @@ const TutorDetail = () => {
         email: userEmail,
       };
 
-      const res = await axios.post("http://localhost:3000/bookings", booking);
+      const res = await axios.post("https://language-server-three.vercel.app/bookings", booking);
       alert("Tutor booked successfully!");
       setIsBooked(true); 
     } catch (err) {

@@ -15,7 +15,7 @@ const MyBookedTutors = () => {
     if (!userEmail) return;
     try {
       const token = await user.getIdToken();
-      const res = await axios.get(`http://localhost:3000/bookings?email=${userEmail}`, {
+      const res = await axios.get(`https://language-server-three.vercel.app/bookings?email=${userEmail}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -35,7 +35,7 @@ const MyBookedTutors = () => {
 
   const handleReview = async (tutorId) => {
     try {
-      await axios.patch(`http://localhost:3000/tutorials/${tutorId}/review`);
+      await axios.patch(`https://language-server-three.vercel.app/tutorials/${tutorId}/review`);
       
       
       setBookings(prev =>
