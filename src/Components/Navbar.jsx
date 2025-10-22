@@ -33,7 +33,8 @@ const Navbar = () => {
   ];
 
   return (
-    <div className='bg-white shadow-md sticky top-0 z-50'>
+    //apply glassmorphism effect to navbar
+    <div className='backdrop-blur-md shadow-md sticky top-0 z-50 bg-opacity-30'>
       <div className="navbar w-11/12 mx-auto py-3 flex justify-between items-center">
         <div className="navbar-start flex items-center gap-1">
           <img className='w-10 h-10 rounded' src={logo} alt="logo" />
@@ -49,7 +50,7 @@ const Navbar = () => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `btn btn-ghost text-teal-800 text-base ${isActive ? 'text-teal-600 bg-slate-200 text-lg' : ''}`
+                `btn btn-ghost text-teal-800 text-lg ${isActive ? 'text-teal-600 bg-slate-300 text-xl font-extrabold' : ''}`
               }
             >
               {link.text}
@@ -62,7 +63,8 @@ const Navbar = () => {
 
          <button
             onClick={() => setDarkMode(!darkMode)}
-            className="btn bg-teal-500 rounded-full text-xl"
+            //dark mode button with glowing background animation
+            className={`btn rounded-full text-xl ${darkMode ? 'bg-teal-500' : 'bg-slate-300'} transition-all duration-300 hover:scale-110`}
             title="Toggle theme"
           >
             {darkMode ? <FaSun /> : <FaMoon />}
@@ -108,7 +110,7 @@ const Navbar = () => {
             key={link.to}
             to={link.to}
             className={({ isActive }) =>
-              `btn btn-ghost text-sm ${isActive ? 'text-green-800 border-b-2 border-green-700' : ''}`
+              `btn text-lg btn-ghost text-teal-400 ${isActive ? 'text-green-800 border-b-2 border-green-700' : ''}`
             }
           >
             {link.text}
