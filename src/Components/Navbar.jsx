@@ -34,8 +34,9 @@ const Navbar = () => {
 
   return (
     //apply glassmorphism effect to navbar
-    <div className='backdrop-blur-md shadow-md sticky top-0 z-50 bg-opacity-30'>
-      <div className="navbar w-11/12 mx-auto py-3 flex justify-between items-center">
+    <div className='backdrop-blur-md shadow-md  top-0 z-50 bg-opacity-30 rounded-b-lg'>
+      
+      <div className="navbar w-11/12 mx-auto py-3 flex justify-between items-center  ">
         <div className="navbar-start flex items-center gap-1">
           <img className='w-10 h-10 rounded' src={logo} alt="logo" />
           <div className='text-2xl font-bold text-teal-900'>
