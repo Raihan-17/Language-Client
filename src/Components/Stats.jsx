@@ -50,7 +50,7 @@ const Stats = () => {
       ref={ref}
       className="pb-16 pt-12 bg-gradient-to-br from-white to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-3xl shadow-inner"
     >
-      <h1 className="text-4xl font-bold text-center mb-3 text-slate-900 dark:text-white">
+      <h1 className="text-4xl font-bold text-center mb-3 text-slate-900 dark:bg-gradient-to-r from-teal-300 to-cyan-400 bg-clip-text text-transparent">
         Our Impact in Numbers
       </h1>
       <p className="text-center font-medium text-lg text-gray-600 dark:text-gray-300 mb-10">
