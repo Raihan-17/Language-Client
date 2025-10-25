@@ -52,7 +52,7 @@ const LanguageCategories = () => {
       <div
         data-aos="fade-up"
         data-aos-delay="200"
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 "
       >
         {languages.map((lang, index) => (
           <motion.div
@@ -68,11 +68,12 @@ const LanguageCategories = () => {
             onClick={() => navigate(`/tutors`)}
             className="group relative flex items-center justify-between p-6 
                        bg-white/80 dark:bg-slate-800/70 rounded-2xl cursor-pointer 
-                       overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 
+                       overflow-hidden shadow-lg 
+                             shadow-cyan-400/30 transition-all duration-500 
                        border border-transparent hover:border-blue-400"
           >
             {/* ✨ Glowing Gradient Border Layer */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-700 glow"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400 via-teal-400 to-cyan-400 opacity-0 group-hover:opacity-100 blur-xl transition-all duration-700 glow "></div>
 
             {/* Card Content */}
             <div className="relative flex items-center gap-4 z-10">
