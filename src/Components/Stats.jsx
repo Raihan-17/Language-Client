@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Stats = () => {
   const [ref, inView] = useInView({
@@ -18,7 +18,7 @@ const Stats = () => {
 
   useEffect(() => {
     if (inView) {
-      const duration = 5; 
+      const duration = 5;
       const increments = {
         tutors: 32000 / (60 * duration),
         reviews: 300000 / (60 * duration),
@@ -28,70 +28,66 @@ const Stats = () => {
       };
 
       const interval = setInterval(() => {
-        setCounts(prev => ({
+        setCounts((prev) => ({
           tutors: Math.min(prev.tutors + increments.tutors, 32000),
           reviews: Math.min(prev.reviews + increments.reviews, 300000),
           languages: Math.min(prev.languages + increments.languages, 120),
-          nationalities: Math.min(prev.nationalities + increments.nationalities, 180),
+          nationalities: Math.min(
+            prev.nationalities + increments.nationalities,
+            180
+          ),
           rating: Math.min(prev.rating + increments.rating, 4.8),
         }));
-      }, 1000 / 60); 
+      }, 1000 / 60);
 
       return () => clearInterval(interval);
     }
   }, [inView]);
 
   return (
-    <section data-aos="zoom-in-down"
-     ref={ref} className="pb-10 pt-7  bg-white rounded-lg shadow-2xl">
+    
+    <section
+      ref={ref}
+      className="pb-16 pt-12 bg-gradient-to-br from-white to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-3xl shadow-inner"
+    >
+      <h1 className="text-4xl font-bold text-center mb-3 text-slate-900 dark:text-white">
+        Our Impact in Numbers
+      </h1>
+      <p className="text-center font-medium text-lg text-gray-600 dark:text-gray-300 mb-10">
+        Multiplying Fluency, Dividing Borders
+      </p>
 
-<h1 className="text-4xl md:text-4xl font-bold text-center mb-3 text-black dark:text-">
-      Our Impact in Numbers
-    </h1>
-    <p className='text-center font-medium text-lg text-gray-600 mb-8'>Multiplying Fluency, Dividing Borders</p>
-
-    <div className="max-w-7xl mx-auto px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+      <div className="max-w-7xl mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
           className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center"
         >
-          {/* Tutor Count */}
-          <StatCard data-aos="flip-left"
-     data-aos-easing="ease-out-cubic"
-     data-aos-duration="2000"
-            value={Math.floor(counts.tutors).toLocaleString() + "+"} 
-            label="Experienced tutors"
-            icon=""
+          <StatCard
+            value={Math.floor(counts.tutors).toLocaleString() + "+"}
+            label="Experienced Tutors"
+            color="from-teal-400 to-cyan-500"
           />
-
-          {/* Review Count */}
-          <StatCard 
-            value={Math.floor(counts.reviews).toLocaleString() + "+"} 
-            label="5-star tutor reviews"
-            icon=""
+          <StatCard
+            value={Math.floor(counts.reviews).toLocaleString() + "+"}
+            label="5-Star Tutor Reviews"
+            color="from-pink-400 to-red-500"
           />
-
-          {/* Languages Count */}
-          <StatCard 
-            value={Math.floor(counts.languages) + "+"} 
-            label="Subjects taught"
-            icon=""
+          <StatCard
+            value={Math.floor(counts.languages) + "+"}
+            label="Subjects Taught"
+            color="from-violet-400 to-indigo-500"
           />
-
-          {/* Nationalities Count */}
-          <StatCard 
-            value={Math.floor(counts.nationalities) + "+"} 
-            label="Tutor nationalities"
-            icon=""
+          <StatCard
+            value={Math.floor(counts.nationalities) + "+"}
+            label="Tutor Nationalities"
+            color="from-green-400 to-emerald-500"
           />
-
-          {/* App Rating */}
-          <StatCard 
-            value={counts.rating.toFixed(1) + " ★★★★"} 
-            label="on the App Store"
-            icon=""
+          <StatCard
+            value={counts.rating.toFixed(1) + " ★"}
+            label="App Store Rating"
+            color="from-amber-400 to-yellow-500"
             isRating
           />
         </motion.div>
@@ -100,24 +96,32 @@ const Stats = () => {
   );
 };
 
-const StatCard = ({ value, label, icon, isRating = false }) => {
+const StatCard = ({ value, label, color, isRating = false }) => {
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all"
+      whileHover={{ y: -6, scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+      className={`relative p-6 rounded-2xl bg-white/80 dark:bg-slate-800/80 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group`}
     >
-      <div className="text-4xl mb-2">{icon}</div>
-      <h3 className="text-3xl font-bold text-blue-600 dark:text-teal-400 mb-2">
-        {value}
-      </h3>
-      <p className="text-gray-600 dark:text-gray-300">
-        {label}
-      </p>
-      {isRating && (
-        <div className="mt-2 text-yellow-400">
-          ★★★★☆
-        </div>
-      )}
+      {/* Glowing animated background */}
+      <div
+        className={`absolute inset-0 opacity-0 group-hover:opacity-100 blur-2xl transition-all duration-700 bg-gradient-to-r ${color}`}
+      ></div>
+
+      {/* Inner Glow Layer */}
+      <div className="relative z-10">
+        <h3
+          className={`text-3xl font-extrabold bg-gradient-to-r ${color} bg-clip-text text-transparent mb-2`}
+        >
+          {value}
+        </h3>
+        <p className="text-gray-700 dark:text-gray-300 font-medium">
+          {label}
+        </p>
+        {isRating && (
+          <div className="mt-1 text-yellow-400 text-lg font-bold">★★★★★</div>
+        )}
+      </div>
     </motion.div>
   );
 };
