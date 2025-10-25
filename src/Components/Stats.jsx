@@ -42,7 +42,8 @@ const Stats = () => {
   }, [inView]);
 
   return (
-    <section ref={ref} className="pb-10 pt-7  bg-white rounded-lg shadow-2xl">
+    <section data-aos="zoom-in-down"
+     ref={ref} className="pb-10 pt-7  bg-white rounded-lg shadow-2xl">
 
 <h1 className="text-4xl md:text-4xl font-bold text-center mb-3 text-black dark:text-">
       Our Impact in Numbers
@@ -57,7 +58,9 @@ const Stats = () => {
           className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center"
         >
           {/* Tutor Count */}
-          <StatCard 
+          <StatCard data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000"
             value={Math.floor(counts.tutors).toLocaleString() + "+"} 
             label="Experienced tutors"
             icon=""
